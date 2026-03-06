@@ -1,12 +1,9 @@
 // app.js
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBd3Gt34F1IvP-_Dv1lO7HGYRuek_dD7s0",
   authDomain: "m5-projekt.firebaseapp.com",
@@ -18,6 +15,34 @@ const firebaseConfig = {
   measurementId: "G-EHDCTK3YHZ"
 };
 
-// Initialize Firebase
+// Initialize Firebase (kun én gang)
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const database = getDatabase(app);
+
+// Hurtig database-test
+async function testRealtimeDatabase() {
+  const statusEl = document.getElementById("status");
+
+  try {
+    const testRef = ref(database, "test/connection");
+    await set(testRef, { ok: true, timestamp: Date.now() });
+
+    const snapshot = await get(testRef);
+    console.log("Realtime Database OK:", snapshot.val());
+
+    if (statusEl) {
+      statusEl.textContent = "✅ Firebase virker";
+      statusEl.style.color = "green";
+    }
+  } catch (error) {
+    console.error("Database fejl:", error);
+
+    if (statusEl) {
+      statusEl.textContent = "❌ Firebase fejl: " + error.message;
+      statusEl.style.color = "red";
+    }
+  }
+}
+
+testRealtimeDatabase();
