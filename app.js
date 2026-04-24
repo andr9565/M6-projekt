@@ -5,6 +5,7 @@ import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/1
 
 
 //lets gogogogoggoo
+//tim
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBd3Gt34F1IvP-_Dv1lO7HGYRuek_dD7s0",
