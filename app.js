@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/fireba
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
 import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
-
+//KOM NUUUUU
 //lets gogogogoggoo
 // Your web app's Firebase configuration
 const firebaseConfig = {
