@@ -55,7 +55,7 @@ if (loginForm) {
     }
 
     localStorage.setItem("loggedInUser", username);
-    window.location.href = "dashboard.html";
+    window.location.href = "index.html";
   });
 }
 
