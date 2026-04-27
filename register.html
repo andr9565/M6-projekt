@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BogMarked - Opret konto</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <main class="page">
+
+    <section class="left-side">
+      <div class="left-content">
+        <div class="logo-row">
+          <div class="logo-icon">📖</div>
+          <h1>BogMarked</h1>
+        </div>
+
+        <h2>Opret din konto</h2>
+
+        <p>
+          Bliv en del af BogMarked og begynd at købe og sælge bøger med andre
+          læsere allerede i dag.
+        </p>
+
+        <div class="benefits">
+          <div><span>✓</span> Opret annoncer for dine bøger</div>
+          <div><span>✓</span> Find brugte bøger billigt</div>
+          <div><span>✓</span> Administrér dine salg ét sted</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="right-side">
+      <div class="form-card">
+        <h2>Opret Konto</h2>
+        <p class="subtitle">Indtast dine oplysninger for at oprette en konto</p>
+
+        <form id="registerForm">
+          <label for="registerUsername">Brugernavn</label>
+          <input id="registerUsername" type="text" placeholder="Vælg brugernavn">
+
+          <label for="registerPassword">Adgangskode</label>
+          <input id="registerPassword" type="password" placeholder="Vælg adgangskode">
+
+          <button type="submit">Opret konto</button>
+        </form>
+
+        <p class="switch-text">
+          Har du allerede en konto? <a href="index.html">Log ind</a>
+        </p>
+
+        <p id="status"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

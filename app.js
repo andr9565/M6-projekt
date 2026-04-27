@@ -1,12 +1,11 @@
-// app.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-analytics.js";
-import { getDatabase, ref, set, get } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
+import {
+  getDatabase,
+  ref,
+  set,
+  get
+} from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
-//KOM NUUUUU
-//lets gogogogoggoo
-//tim
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBd3Gt34F1IvP-_Dv1lO7HGYRuek_dD7s0",
   authDomain: "m5-projekt.firebaseapp.com",
@@ -18,34 +17,91 @@ const firebaseConfig = {
   measurementId: "G-EHDCTK3YHZ"
 };
 
-// Initialize Firebase (kun én gang)
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
 const database = getDatabase(app);
 
-// Hurtig database-test
-async function testRealtimeDatabase() {
-  const statusEl = document.getElementById("status");
+const statusEl = document.getElementById("status");
 
-  try {
-    const testRef = ref(database, "test/connection");
-    await set(testRef, { ok: true, timestamp: Date.now() });
-
-    const snapshot = await get(testRef);
-    console.log("Realtime Database OK:", snapshot.val());
-
-    if (statusEl) {
-      statusEl.textContent = "✅ Firebase virker";
-      statusEl.style.color = "green";
-    }
-  } catch (error) {
-    console.error("Database fejl:", error);
-
-    if (statusEl) {
-      statusEl.textContent = "❌ Firebase fejl: " + error.message;
-      statusEl.style.color = "red";
-    }
+function showStatus(message, color) {
+  if (statusEl) {
+    statusEl.textContent = message;
+    statusEl.style.color = color;
   }
 }
 
-testRealtimeDatabase();
+// LOGIN
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+  loginForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("loginUsername").value.trim();
+    const password = document.getElementById("loginPassword").value.trim();
+
+    const userRef = ref(database, "users/" + username);
+    const snapshot = await get(userRef);
+
+    if (!snapshot.exists()) {
+      showStatus("Brugeren findes ikke", "#d93025");
+      return;
+    }
+
+    const user = snapshot.val();
+
+    if (user.password !== password) {
+      showStatus("Forkert adgangskode", "#d93025");
+      return;
+    }
+
+    localStorage.setItem("loggedInUser", username);
+    window.location.href = "dashboard.html";
+  });
+}
+
+// OPRET BRUGER
+const registerForm = document.getElementById("registerForm");
+
+if (registerForm) {
+  registerForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById("registerUsername").value.trim();
+    const password = document.getElementById("registerPassword").value.trim();
+
+    if (!username || !password) {
+      showStatus("Udfyld venligst alle felter", "#d93025");
+      return;
+    }
+
+    const userRef = ref(database, "users/" + username);
+    const snapshot = await get(userRef);
+
+    if (snapshot.exists()) {
+      showStatus("Brugernavnet findes allerede", "#d93025");
+      return;
+    }
+
+    await set(userRef, {
+      username: username,
+      password: password,
+      createdAt: Date.now()
+    });
+
+    showStatus("Konto oprettet! Du sendes til login...", "green");
+
+    setTimeout(function () {
+      window.location.href = "index.html";
+    }, 1200);
+  });
+}
+
+// LOG UD
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+  logoutBtn.addEventListener("click", function () {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "index.html";
+  });
+}
