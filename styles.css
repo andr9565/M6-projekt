@@ -1,3 +1,304 @@
+:root {
+	--bg: #f4f5f8;
+	--panel: #0b1635;
+	--panel-soft: #1f4fc7;
+	--text: #10131a;
+	--muted: #4f5f79;
+	--card: #ffffff;
+	--stroke: #dde2eb;
+	--pill-bg: #edf1f5;
+	--button-bg: #040624;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	min-height: 100vh;
+	background: radial-gradient(circle at top right, #f9fafc 0%, #edf0f5 55%, #e9edf3 100%);
+	color: var(--text);
+	font-family: "Manrope", "Segoe UI", sans-serif;
+}
+
+.page-shell {
+	display: grid;
+	min-height: 100vh;
+	grid-template-columns: 294px 1fr;
+}
+
+.sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: 28px;
+	padding: 32px 22px;
+	color: #f4f6ff;
+	background: linear-gradient(180deg, #101e43 0%, #081632 100%);
+	border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.brand {
+	margin: 0;
+	font-size: 36px;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+}
+
+.menu {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+.menu-item {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	border: 0;
+	border-radius: 12px;
+	padding: 14px 14px;
+	color: #edf1ff;
+	background: transparent;
+	font: inherit;
+	font-size: 32px;
+	font-weight: 600;
+	cursor: pointer;
+	text-align: left;
+	text-decoration: none;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-item:hover {
+	background: rgba(74, 124, 255, 0.2);
+	transform: translateX(1px);
+}
+
+.menu-item.active {
+	background: #2b67ea;
+}
+
+.menu-icon {
+	width: 30px;
+	display: inline-flex;
+	justify-content: center;
+}
+
+.connection-status {
+	margin: auto 0 0;
+	opacity: 0.75;
+	font-size: 14px;
+}
+
+.content {
+	padding: 42px 34px 30px;
+}
+
+.hero h1 {
+	margin: 0;
+	font-size: 62px;
+	letter-spacing: -0.03em;
+}
+
+.hero p {
+	margin: 8px 0 0;
+	font-size: 38px;
+	color: var(--muted);
+}
+
+.section-title {
+	margin: 42px 0 20px;
+	font-size: 54px;
+	letter-spacing: -0.02em;
+}
+
+.book-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(280px, 1fr));
+	gap: 28px;
+}
+
+.book-card {
+	border-radius: 16px;
+	overflow: hidden;
+	background: var(--card);
+	border: 1px solid var(--stroke);
+	box-shadow: 0 6px 16px rgba(11, 22, 53, 0.05);
+}
+
+.book-cover {
+	width: 100%;
+	height: 230px;
+	object-fit: cover;
+	display: block;
+}
+
+.book-body {
+	padding: 20px 28px 24px;
+}
+
+.book-title {
+	margin: 0;
+	font-size: 42px;
+	line-height: 1.15;
+	letter-spacing: -0.02em;
+}
+
+.book-author {
+	margin: 14px 0 16px;
+	color: var(--muted);
+	font-size: 36px;
+}
+
+.pill-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 12px;
+}
+
+.pill {
+	padding: 4px 12px;
+	border-radius: 999px;
+	background: var(--pill-bg);
+	font-size: 28px;
+	font-weight: 600;
+}
+
+.seller {
+	margin: 0;
+	color: var(--muted);
+	font-size: 34px;
+}
+
+.book-footer {
+	margin-top: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 14px;
+}
+
+.price {
+	margin: 0;
+	font-size: 44px;
+	font-weight: 800;
+}
+
+.contact-btn {
+	border: 0;
+	border-radius: 12px;
+	padding: 10px 22px;
+	background: var(--button-bg);
+	color: #fff;
+	font: inherit;
+	font-size: 32px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-btn:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 8px 16px rgba(4, 6, 36, 0.22);
+}
+
+@media (max-width: 1400px) {
+	.page-shell {
+		grid-template-columns: 240px 1fr;
+	}
+
+	.brand {
+		font-size: 28px;
+	}
+
+	.menu-item {
+		font-size: 22px;
+	}
+
+	.hero h1 {
+		font-size: 46px;
+	}
+
+	.hero p {
+		font-size: 28px;
+	}
+
+	.section-title {
+		font-size: 40px;
+	}
+
+	.book-title {
+		font-size: 30px;
+	}
+
+	.book-author,
+	.seller {
+		font-size: 24px;
+	}
+
+	.pill {
+		font-size: 18px;
+	}
+
+	.price {
+		font-size: 34px;
+	}
+
+	.contact-btn {
+		font-size: 22px;
+	}
+}
+
+@media (max-width: 1100px) {
+	.book-grid {
+		grid-template-columns: repeat(2, minmax(260px, 1fr));
+	}
+}
+
+@media (max-width: 840px) {
+	.page-shell {
+		grid-template-columns: 1fr;
+	}
+
+	.sidebar {
+		gap: 16px;
+		padding: 20px;
+	}
+
+	.menu {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(130px, 1fr));
+	}
+
+	.connection-status {
+		margin-top: 8px;
+	}
+
+	.content {
+		padding: 24px 18px 28px;
+	}
+
+	.hero h1 {
+		font-size: 36px;
+	}
+
+	.hero p {
+		font-size: 22px;
+	}
+
+	.section-title {
+		margin-top: 30px;
+		font-size: 32px;
+	}
+
+	.book-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+
 * {
   margin: 0;
   padding: 0;

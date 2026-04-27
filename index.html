@@ -3,66 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BogMarked - Login</title>
-  <link rel="stylesheet" href="./styles.css">
+  <title>Brugte Studiebøger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="page-shell">
+    <aside class="sidebar">
+      <h2 class="brand">Brugte Studiebøger</h2>
 
-  <main class="page">
+      <nav class="menu" aria-label="Hovedmenu">
+        <a class="menu-item active" href="index.html" aria-current="page">
+          <span class="menu-icon" aria-hidden="true">⌂</span>
+          <span>Hjem</span>
+        </a>
+        <a class="menu-item" href="koeb-boeger.html">
+          <span class="menu-icon" aria-hidden="true">📖</span>
+          <span>Køb bøger</span>
+        </a>
+        <a class="menu-item" href="saelg-boeger.html">
+          <span class="menu-icon" aria-hidden="true">⊕</span>
+          <span>Sælg bøger</span>
+        </a>
+        <a class="menu-item" href="min-bruger.html">
+          <span class="menu-icon" aria-hidden="true">◌</span>
+          <span>Min bruger</span>
+        </a>
+      </nav>
 
-    <section class="left-side">
-      <div class="left-content">
-        <div class="logo-row">
-          <div class="logo-icon">📖</div>
-          <h1>BogMarked</h1>
-        </div>
+      <p class="connection-status" id="status">Klar</p>
+    </aside>
 
-        <h2>Din Markedsplads for Bøger</h2>
+    <main class="content">
+      <header class="hero">
+        <h1 id="welcome-title">Velkommen "navn"</h1>
+        <p>Find billige studiebøger og sælg dine egne brugte bøger her</p>
+      </header>
 
-        <p>
-          Køb og sælg bøger med læsere fra hele verden. Find sjældne udgaver,
-          oplev nye favoritter, og giv dine bøger nyt liv.
-        </p>
+      <section>
+        <h2 class="section-title">Nyeste bøger til salg</h2>
+        <div class="book-grid" id="book-grid"></div>
+      </section>
+    </main>
+  </div>
 
-        <div class="benefits">
-          <div><span>✓</span> Gennemse tusindvis af bøger</div>
-          <div><span>✓</span> Byd på dine favoritter</div>
-          <div><span>✓</span> Sælg din samling nemt</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="right-side">
-      <div class="form-card">
-        <h2>Velkommen Tilbage</h2>
-        <p class="subtitle">Indtast dine oplysninger for at få adgang til din konto</p>
-
-        <form id="loginForm">
-          <label for="loginUsername">Brugernavn</label>
-          <input id="loginUsername" type="text" placeholder="Indtast dit brugernavn">
-
-          <label for="loginPassword">Adgangskode</label>
-          <input id="loginPassword" type="password" placeholder="Indtast din adgangskode">
-
-          <a class="forgot" href="#">Glemt adgangskode?</a>
-
-          <button type="submit">Log ind</button>
-        </form>
-
-        <p class="switch-text">
-          Har du ikke en konto? <a href="register.html">Tilmeld dig</a>
-        </p>
-
-        <div class="demo-box">
-          <strong>Demo:</strong> Brug brugernavn "bogormen42" eller opret en ny konto
-        </div>
-
-        <p id="status"></p>
-      </div>
-    </section>
-
-  </main>
-
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
