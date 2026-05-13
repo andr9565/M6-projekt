@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sælg bøger | Brugte Studiebøger</title>
+  <title>Min bruger | Brugte Studiebøger</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,20 +23,82 @@
           <span class="menu-icon" aria-hidden="true">📖</span>
           <span>Køb bøger</span>
         </a>
-        <a class="menu-item active" href="saelg-boeger.html" aria-current="page">
+        <a class="menu-item" href="saelg-boeger.html">
           <span class="menu-icon" aria-hidden="true">⊕</span>
           <span>Sælg bøger</span>
         </a>
-        <a class="menu-item" href="min-bruger.html">
+        <a class="menu-item active" href="min-bruger.html" aria-current="page">
           <span class="menu-icon" aria-hidden="true">◌</span>
           <span>Min bruger</span>
         </a>
       </nav>
 
-      <p class="connection-status">Klar</p>
     </aside>
 
-    <main class="content"></main>
+    <main class="content">
+
+      <h1>Sælg dine bøger her!</h1>
+      <p>Udfyld formularen nedenfor med oplysninger om bogen, herunder titel, forfatter, tilstand og ønsket salgspris. Jo mere detaljeret din beskrivelse er, desto bedre chancer har du for at tiltrække købere.
+      <p><strong>Husk at være ærlig om bogens tilstand - ellers får du et dårligere ry end en 8:00-forelæsning.
+
+      <form>
+
+        <label>Navn på bog</label>
+        <br>
+        <input type="text" required>
+        <br>
+        <br>
+
+        <label>Upload billede</label>
+        <br>
+        <input type="file" accept="image/*" required>
+        <br>
+        <br>
+        
+        <label>Forfatter</label>
+        <br>
+        <input type="text" required>
+        <br>
+
+        <br>
+        <label>Tilstand</label>
+        <br>
+        <select required>
+          <option value="">Vælg</option>
+          <option value="ny">Ny</option>
+          <option value="brugt">Brugt</option>
+          <option value="slidt">Slidt</option>
+        </select>
+        <br>
+        <br>
+        
+        <label>Salgspris</label>
+        <br>
+        <input type="number" value="0" required> DKK
+        <br>
+        <br>
+
+        <label>Beskrivelse</label>
+        <br>
+        <textarea rows="6" required></textarea>
+        <br>
+        <br>
+
+        <button type="submit">Sæt til salg</button>
+
+      </form>
+
+    </main>
   </div>
+
+  <style>
+    form input,
+    form select,
+    form textarea {
+      width: 50%;
+      box-sizing: border-box;
+    }
+  </style>
+
 </body>
 </html>
