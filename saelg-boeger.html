@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Min bruger | Brugte Studiebøger</title>
+  <title>Sælg bøger | Brugte Studiebøger</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,87 +23,51 @@
           <span class="menu-icon" aria-hidden="true">📖</span>
           <span>Køb bøger</span>
         </a>
-        <a class="menu-item" href="saelg-boeger.html">
+        <a class="menu-item active" href="saelg-boeger.html" aria-current="page">
           <span class="menu-icon" aria-hidden="true">⊕</span>
           <span>Sælg bøger</span>
         </a>
-        <a class="menu-item active" href="min-bruger.html" aria-current="page">
+        <a class="menu-item" href="min-bruger.html">
           <span class="menu-icon" aria-hidden="true">◌</span>
           <span>Min bruger</span>
         </a>
       </nav>
 
+      <a id="logoutBtn" class="menu-item" href="#" style="margin-top:12px;">
+        <span class="menu-icon" aria-hidden="true">⇦</span>
+        <span>Log ud</span>
+      </a>
+
     </aside>
 
     <main class="content">
 
-      <h1>Sæt din bog til salg</h1>
-      <p>Udfyld salgsformularen nedenfor og sæt din bog til salg her.</p>
-
-      <form>
-
-        <label>Navn på bog</label>
-        <br>
-        <input type="text" required>
-        <br>
-
-        <br>
-        <label>Tilstand</label>
-        <br>
-        <select required>
-          <option value="">Vælg</option>
-          <option value="ny">Ny</option>
-          <option value="brugt">Brugt</option>
-          <option value="slidt">Slidt</option>
-        </select>
-        <br>
-
-        <br>
-        <label>Salgspris</label>
-        <br>
-        <input type="number" required>
-        <br>
-        <br>
-
-        <label>Beskrivelse</label>
-        <br>
-        <textarea rows="6" required></textarea>
-
-        <br>
-        <br>
-        <button type="submit">Sæt til salg</button>
-
-      </form>
-
-    </main>
-    <main class="content">
-
       <h1>Sælg dine bøger her!</h1>
-      <p>Udfyld formularen nedenfor med oplysninger om bogen, herunder titel, forfatter, tilstand og ønsket salgspris. Jo mere detaljeret din beskrivelse er, desto bedre chancer har du for at tiltrække købere.
-      <p><strong>Husk at være ærlig om bogens tilstand - ellers får du et dårligere ry end en 8:00-forelæsning.
+      <p>Udfyld formularen nedenfor med oplysninger om bogen, herunder titel, forfatter, tilstand og ønsket salgspris. Jo mere detaljeret din beskrivelse er, desto bedre chancer har du for at tiltrække købere.</p>
+      <p><strong>Husk at være ærlig om bogens tilstand - ellers får du et dårligere ry end en 8:00-forelæsning.</strong></p>
 
-      <form>
+      <form id="sellForm" novalidate>
 
-        <label>Navn på bog</label>
+        <label for="bookTitle">Navn på bog</label>
         <br>
-        <input type="text" required>
+        <input id="bookTitle" type="text" required>
         <br>
         <br>
 
-        <label>Upload billede</label>
+        <label for="bookCover">Upload billede</label>
         <br>
-        <input type="file" accept="image/*" required>
+        <input id="bookCover" type="file" accept="image/*">
         <br>
         <br>
         
-        <label>Forfatter</label>
+        <label for="bookAuthor">Forfatter</label>
         <br>
-        <input type="text" required>
+        <input id="bookAuthor" type="text" required>
         <br>
 
-        <label>Tilstand</label>
+        <label for="bookCondition">Tilstand</label>
         <br>
-        <select required>
+        <select id="bookCondition" required>
           <option value="">Vælg</option>
           <option value="ny">Ny</option>
           <option value="brugt">Brugt</option>
@@ -111,19 +75,22 @@
         </select>
         <br>
         
-        <label>Salgspris</label>
+        <label for="bookPrice">Salgspris</label>
         <br>
-        <input type="number" value="0" required> DKK
-        <br>
-
-        <label>Beskrivelse</label>
-        <br>
-        <textarea rows="6" required></textarea>
+        <input id="bookPrice" type="number" value="0" required> DKK
         <br>
 
-        <button type="submit">Sæt til salg</button>
+        <label for="bookDescription">Beskrivelse</label>
+        <br>
+        <textarea id="bookDescription" rows="6" required></textarea>
+        <br>
+
+        <button id="sellSubmitBtn" type="button" onclick="submitBookDirectly()">Sæt til salg</button>
 
       </form>
+
+      <p id="status" class="connection-status">Klar</p>
+      <p id="sell-debug" class="connection-status"></p>
 
     </main>
   </div>
@@ -136,6 +103,82 @@
       box-sizing: border-box;
     }
   </style>
+
+  <script>
+    async function submitBookDirectly() {
+      alert('Sæt til salg blev klikket');
+
+      const statusEl = document.getElementById('status');
+      const debugEl = document.getElementById('sell-debug');
+      const title = document.getElementById('bookTitle').value.trim();
+      const author = document.getElementById('bookAuthor').value.trim();
+      const condition = document.getElementById('bookCondition').value.trim();
+      const price = document.getElementById('bookPrice').value.trim();
+      const description = document.getElementById('bookDescription').value.trim();
+      const coverInput = document.getElementById('bookCover');
+      const coverFile = coverInput.files && coverInput.files[0];
+      const seller = localStorage.getItem('loggedInUser') || 'Ukendt bruger';
+
+      const setMessage = (message, color) => {
+        if (debugEl) {
+          debugEl.textContent = message;
+          debugEl.style.color = color || '';
+        }
+        if (statusEl) {
+          statusEl.textContent = message;
+          statusEl.style.color = color || '';
+        }
+      };
+
+      if (!title || !author || !condition || !price || !description) {
+        setMessage('Udfyld venligst alle felter', '#d93025');
+        return;
+      }
+
+      const readFileAsDataUrl = (file) => new Promise((resolve, reject) => {
+        if (!file) {
+          resolve('');
+          return;
+        }
+
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('Kunne ikke læse billedfilen'));
+        reader.readAsDataURL(file);
+      });
+
+      try {
+        setMessage('Gemmer bogen i databasen...', '#1f4fc7');
+        const coverUrl = await readFileAsDataUrl(coverFile);
+        const response = await fetch('https://m5-projekt-default-rtdb.europe-west1.firebasedatabase.app/books.json', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title,
+            author,
+            condition,
+            price,
+            description,
+            coverUrl,
+            seller,
+            createdAt: Date.now()
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Database write failed: ' + response.status);
+        }
+
+        document.getElementById('sellForm').reset();
+        setMessage('Bogen blev gemt', 'green');
+      } catch (error) {
+        console.error(error);
+        setMessage('Kunne ikke gemme bogen', '#d93025');
+      }
+    }
+  </script>
+
+  <script type="module" src="./app.js"></script>
 
 </body>
 </html>

@@ -8,6 +8,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    if (!localStorage.getItem('loggedInUser')) {
+      window.location.replace('login.html');
+    }
+  </script>
 </head>
 <body>
   <div class="page-shell">
@@ -32,6 +37,11 @@
           <span>Min bruger</span>
         </a>
       </nav>
+
+      <a id="logoutBtn" class="menu-item" href="#" style="margin-top:12px;">
+        <span class="menu-icon" aria-hidden="true">⇦</span>
+        <span>Log ud</span>
+      </a>
 
       <p class="connection-status" id="status">Klar</p>
     </aside>
