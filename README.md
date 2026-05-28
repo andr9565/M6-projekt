@@ -41,7 +41,6 @@ Projektet er udviklet i forbindelse med Modul 6: *Design af it-baserede systemer
 
 ## Ikke-funktionelle krav
 
-* Systemet skal kunne håndtere mindst 5 samtidige brugere
 * Skal fungere i moderne browsere:
 
   * Chrome
@@ -57,7 +56,7 @@ Projektet er udviklet i forbindelse med Modul 6: *Design af it-baserede systemer
 
 Projektet udvikles som en webapplikation med database.
 
-## Frontend
+## Frontend & Backend
 
 * HTML
 * CSS
@@ -71,7 +70,13 @@ Projektet udvikles som en webapplikation med database.
 
 * Figma
 * UML-diagrammer
-* Activity diagrams
+   * Activity diagram
+      * Opret bruger
+      * Salg af bog
+      * Køb bog
+      * Login
+   * Use case diagram
+      * Use case diagram af systemet
 
 ---
 
@@ -123,7 +128,8 @@ Formular til oprettelse af nye bøger med:
 
 # Designproces
 
-Projektet startede med low-fi skitser tegnet i hånden af alle gruppemedlemmer. Herefter blev der udarbejdet samlede wireframes og high-fi designs i Figma.
+Projektet startede med low-fi skitser tegnet i hånden af alle gruppemedlemmer. Herefter blev der udarbejdet samlede wireframes og high-fi designs i Figma. 
+Prototype kan tilgås i det vedhæftede dokument "navn"
 
 Der er desuden udviklet UML-diagrammer og activity diagrams til modellering af systemets funktionalitet.
 
@@ -136,7 +142,12 @@ Der er desuden udviklet UML-diagrammer og activity diagrams til modellering af s
 # Gruppe
 
 Projektet er udviklet af Gruppe 11 som en del af Modul 6.
-
+Gruppen består af
+ * Andreas Jølstad Jensen
+ * Simon Mosgaard Overgaard Jensen
+ * Søren Nygaard
+ * Tim Nordahl Hammer
+ 
 ---
 
 
