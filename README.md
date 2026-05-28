@@ -63,13 +63,9 @@ Projektet udvikles som en webapplikation med database.
 * CSS
 * JavaScript
 
-## Backend
-
-* Node.js / Express *(kan ændres hvis I bruger andet)*
-
 ## Database
 
-* MySQL / SQLite *(tilpas efter jeres løsning)*
+* Google Firebase
 
 ## Designværktøjer
 
