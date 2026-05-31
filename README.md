@@ -137,6 +137,7 @@ Der er desuden udviklet UML-diagrammer og activity diagrams til modellering af s
 # Retro perspective 
 
 Hvad fungerede godt?
+
 Overordnet set har projektforløbet været præget af et godt samarbejde og en hensigtsmæssig arbejdsproces. Særligt designfasen fungerede godt, da alle gruppemedlemmer individuelt udarbejdede egne low-fidelity prototyper. Dette skabte et bredt idégrundlag, som efterfølgende blev diskuteret i gruppen. På baggrund af de bedste elementer fra de forskellige forslag blev der opnået en fælles forståelse af systemets design, som derefter blev videreudviklet til en samlet high-fidelity prototype.
 Til projektstyring valgte gruppen at anvende Kanban. Valget blev truffet for at afprøve en anden arbejdsform end Scrum, som gruppen tidligere har erfaring med. Kanban fungerede generelt tilfredsstillende til at skabe overblik over opgaver og deres status. Samtidig oplevede gruppen dog, at nogle opgaver blev mere omfattende end først antaget, hvilket gjorde det nødvendigt løbende at justere arbejdsfordelingen og prioriteringen af opgaver.
 
