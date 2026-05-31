@@ -134,6 +134,18 @@ Prototype kan tilgås i det vedhæftede dokument "navn"
 Der er desuden udviklet UML-diagrammer og activity diagrams til modellering af systemets funktionalitet.
 
 ---
+# Retro perspective 
+
+Hvad fungerede godt?
+Overordnet set har projektforløbet været præget af et godt samarbejde og en hensigtsmæssig arbejdsproces. Særligt designfasen fungerede godt, da alle gruppemedlemmer individuelt udarbejdede egne low-fidelity prototyper. Dette skabte et bredt idégrundlag, som efterfølgende blev diskuteret i gruppen. På baggrund af de bedste elementer fra de forskellige forslag blev der opnået en fælles forståelse af systemets design, som derefter blev videreudviklet til en samlet high-fidelity prototype.
+Til projektstyring valgte gruppen at anvende Kanban. Valget blev truffet for at afprøve en anden arbejdsform end Scrum, som gruppen tidligere har erfaring med. Kanban fungerede generelt tilfredsstillende til at skabe overblik over opgaver og deres status. Samtidig oplevede gruppen dog, at nogle opgaver blev mere omfattende end først antaget, hvilket gjorde det nødvendigt løbende at justere arbejdsfordelingen og prioriteringen af opgaver.
+
+Hvad fungerede mindre godt?
+I udviklingsfasen opstod der enkelte udfordringer. En af de væsentligste udfordringer var koordineringen af kodearbejdet. På et tidspunkt arbejdede to gruppemedlemmer samtidigt på den samme fil (index.html) uden forudgående koordinering, hvilket førte til konflikter ved sammenlægning af kode. Denne situation understregede vigtigheden af løbende kommunikation, tydelig opgavefordeling og brug af branches ved parallel udvikling.
+
+Hvad vil vi gøre anderledes næste gang?
+Fremadrettet vil gruppen anvende branches mere systematisk, så parallel udvikling i højere grad kan foregå uden risiko for konflikter i de samme filer. Derudover vil gruppen prioritere hyppigere koordinering omkring udviklingsopgaver og sikre en endnu tydeligere opgave- og rollefordeling. Dette forventes at reducere risikoen for dobbeltarbejde og samtidig styrke effektiviteten i udviklingsprocesse
+
 
 
 
