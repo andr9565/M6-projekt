@@ -9,6 +9,15 @@ import {
   onValue
 } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-database.js";
 
+/*
+  Kommentarer i `app.js` (praktisk forklaring for gruppen)
+  - Dette script styrer: Firebase-init, sidebeskyttelse (redirect), rendering af bøger,
+    oprettelse og sletning af bøger samt bruger-tilstand i localStorage.
+  - Vigtige funktioner: renderBooks, setupBookFeed, processSellForm, setupUserPage, deleteBook.
+  - Sikkerheds-note: demoen gemmer passwords i Realtime DB i klartekst. I kan forbedre det
+    ved at skifte til Firebase Auth og Cloud Storage til billeder.
+*/
+
 const firebaseConfig = {
   apiKey: "AIzaSyBd3Gt34F1IvP-_Dv1lO7HGYRuek_dD7s0",
   authDomain: "m5-projekt.firebaseapp.com",
@@ -34,6 +43,7 @@ if (protectedPages.has(currentPage) && !isLoggedIn) {
   window.location.replace('index.html');
 }
 
+// Hjælper: Vis en statusbesked i UI (bruges af login/register/salg)
 function showStatus(message, color) {
   const statusEl = document.getElementById('status');
   if (statusEl) {
@@ -44,6 +54,7 @@ function showStatus(message, color) {
   console.log(message);
 }
 
+// Debug-udskrifter specifikt for salgssiden (vises i '#sell-debug')
 function showSellDebug(message, color) {
   const debugEl = document.getElementById('sell-debug');
   if (debugEl) {
@@ -53,6 +64,7 @@ function showSellDebug(message, color) {
   console.log(message);
 }
 
+// Simpel HTML-escaping for at undgå XSS når vi sætter tekst i DOM'en
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -62,6 +74,7 @@ function escapeHtml(value) {
     .replaceAll("'", '&#39;');
 }
 
+// Renders: Bygger HTML-kort for hver bog og indsætter i alle elementer med id '#book-grid'
 function renderBooks(books) {
   const bookGrids = document.querySelectorAll('#book-grid');
   if (!bookGrids.length) return;
@@ -103,6 +116,7 @@ function renderBooks(books) {
   });
 }
 
+// Sæt en realtime lytter på 'books' i Firebase - opdater UI når data ændrer sig
 function setupBookFeed() {
   const booksRef = ref(database, 'books');
   onValue(
@@ -120,6 +134,7 @@ function setupBookFeed() {
   );
 }
 
+// Fallback / alternativ: Hent bøger via REST-endpoint og render dem
 async function loadBooksViaRest() {
   const bookGrids = document.querySelectorAll('#book-grid');
   if (!bookGrids.length) return;
@@ -137,6 +152,7 @@ async function loadBooksViaRest() {
   }
 }
 
+// Hjælper: Læser en File/Blob og returnerer en data-URL (bruges til billedupload i demo)
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -150,6 +166,7 @@ function fileToDataUrl(file) {
 const loginForm = document.getElementById("loginForm");
 
 if (loginForm) {
+  // Login-flow: valider bruger mod Realtime DB (simpel demo-tilgang)
   loginForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -180,6 +197,7 @@ if (loginForm) {
 const registerForm = document.getElementById("registerForm");
 
 if (registerForm) {
+  // Register-flow: gemmer brugernavn og password i DB under 'users/<username>'
   registerForm.addEventListener("submit", async function (event) {
     event.preventDefault();
 
@@ -217,6 +235,7 @@ if (registerForm) {
 const sellForm = document.getElementById('sellForm');
 const sellButton = document.getElementById('sellSubmitBtn');
 
+// ProcessSellForm: Validerer formularen, konverterer billede (hvis uploadet) og skriver ny bog til DB
 async function processSellForm() {
   console.log('Sell form submitted');
   showSellDebug('Submit ramte formularen', '#1f4fc7');
@@ -296,6 +315,7 @@ if (document.querySelector('#book-grid')) {
 }
 
 // LOG UD: bind after DOM ready, hide when not logged in
+// Logout: Delegation på dokumentet så alle '#logoutBtn' virker uden at skulle binde dem individuelt
 function setupLogoutDelegation() {
   const updateVisibility = () => {
     document.querySelectorAll('#logoutBtn').forEach(el => {
@@ -341,6 +361,7 @@ if (document.readyState === 'loading') {
 window.processSellForm = processSellForm;
 
 // MIN BRUGER: vis brugerinfo og brugerens egne bøger + slette-funktion
+// renderUserBooks: filtrerer bøger efter `seller === username` og indsætter i '#user-book-grid'
 function renderUserBooks(books, username) {
   const grid = document.getElementById('user-book-grid');
   if (!grid) return;
@@ -371,6 +392,7 @@ function renderUserBooks(books, username) {
   `).join('');
 }
 
+// deleteBook: Sletter en bog fra databasen efter bekræftelse fra brugeren
 async function deleteBook(bookId) {
   if (!confirm('Slet denne bog permanent?')) return;
   try {
@@ -382,6 +404,7 @@ async function deleteBook(bookId) {
   }
 }
 
+// setupUserPage: Indsætter brugerinfo i UI og sætter realtime-lytter til denne brugers bøger
 function setupUserPage() {
   const username = localStorage.getItem('loggedInUser');
   const infoEl = document.getElementById('user-info');

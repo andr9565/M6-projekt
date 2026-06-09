@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!-- Register-side: opret bruger (gemmes i DB under users/<username>) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BogMarked - Opret konto</title>
@@ -37,13 +38,17 @@
         <h2>Opret Konto</h2>
         <p class="subtitle">Indtast dine oplysninger for at oprette en konto</p>
 
+        <!-- Registrerings-form: opretter bruger i Realtime DB under users/<username> -->
         <form id="registerForm">
+          <!-- Vælg brugernavn: bruges som unik nøgle i databasen -->
           <label for="registerUsername">Brugernavn</label>
           <input id="registerUsername" type="text" placeholder="Vælg brugernavn">
 
+          <!-- Vælg password: i demo gemmes det u-hash'et (overvej Firebase Auth) -->
           <label for="registerPassword">Adgangskode</label>
           <input id="registerPassword" type="password" placeholder="Vælg adgangskode">
 
+          <!-- Opret konto: app.js håndterer submit og skriver til DB -->
           <button type="submit">Opret konto</button>
         </form>
 

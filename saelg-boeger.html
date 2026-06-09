@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!--
+    Kommentar (Sælg bøger)
+    - Formål: Formular hvor en bruger kan oprette et salgsopslag.
+    - Hvordan: Formularen indsamler felter og gemmer dem via Firebase (se script nederst).
+    - Bemærk: Vi bruger base64-billeder i demoen; overvej Cloud Storage til produktion.
+  -->
+    <!-- Sælg-side: formular til oprettelse af annonce; håndteres i app.js -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sælg bøger | Brugte Studiebøger</title>
@@ -11,9 +18,11 @@
 </head>
 <body>
   <div class="page-shell">
+    <!-- Sidebar: navigation og adgang til andre sider -->
     <aside class="sidebar">
       <h2 class="brand">Brugte Studiebøger</h2>
 
+      <!-- Menu: brug links til at navigere rundt i appen -->
       <nav class="menu" aria-label="Hovedmenu">
         <a class="menu-item" href="index.html">
           <span class="menu-icon" aria-hidden="true">⌂</span>
@@ -33,6 +42,7 @@
         </a>
       </nav>
 
+      <!-- Logout-knap: fjerner bruger fra localStorage og sender til login -->
       <a id="logoutBtn" class="menu-item" href="#" style="margin-top:12px;">
         <span class="menu-icon" aria-hidden="true">⇦</span>
         <span>Log ud</span>
@@ -42,12 +52,15 @@
 
     <main class="content">
 
+      <!-- Sideoverskrift: forklarer formålet med denne side -->
       <h1>Sælg dine bøger her!</h1>
       <p>Udfyld formularen nedenfor med oplysninger om bogen, herunder titel, forfatter, tilstand og ønsket salgspris. Jo mere detaljeret din beskrivelse er, desto bedre chancer har du for at tiltrække købere.</p>
       <p><strong>Husk at være ærlig om bogens tilstand - ellers får du et dårligere ry end en 8:00-forelæsning.</strong></p>
 
+      <!-- Salgformular: felterne bliver valideret og sendt til Firebase via app.js -->
       <form id="sellForm" novalidate>
 
+        <!-- Bogtitel: påkrævet felt -->
         <label for="bookTitle">Navn på bog</label>
         <br>
         <input id="bookTitle" type="text" required>
@@ -56,15 +69,18 @@
 
         <label for="bookCover">Upload billede</label>
         <br>
+        <!-- Upload cover: vælg et billede (valgfrit) -->
         <input id="bookCover" type="file" accept="image/*">
         <br>
         <br>
         
+        <!-- Forfatter: påkrævet tekstfelt -->
         <label for="bookAuthor">Forfatter</label>
         <br>
         <input id="bookAuthor" type="text" required>
         <br>
 
+        <!-- Tilstand: vælg stand (ny/brugt/slidt) -->
         <label for="bookCondition">Tilstand</label>
         <br>
         <select id="bookCondition" required>
@@ -75,16 +91,19 @@
         </select>
         <br>
         
+        <!-- Pris: numerisk input i DKK -->
         <label for="bookPrice">Salgspris</label>
         <br>
         <input id="bookPrice" type="number" value="0" required> DKK
         <br>
 
+        <!-- Beskrivelse: detaljer om bogens tilstand og indhold -->
         <label for="bookDescription">Beskrivelse</label>
         <br>
         <textarea id="bookDescription" rows="6" required></textarea>
         <br>
 
+        <!-- Sæt til salg: sender formularen (kan trigge processSellForm i app.js) -->
         <button id="sellSubmitBtn" type="button" onclick="submitBookDirectly()">Sæt til salg</button>
 
       </form>
