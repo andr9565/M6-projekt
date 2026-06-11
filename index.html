@@ -9,10 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script>
-    if (!localStorage.getItem('loggedInUser')) {
-      window.location.replace('login.html');
-    }
-  </script>
+  const user = localStorage.getItem('loggedInUser');
+  if (!user) {
+    window.location.replace('login.html');
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('welcome-title').textContent = 'Velkommen ' + user;
+    });
+  }
+</script>
 </head>
 <body>
   <div class="page-shell">
@@ -48,7 +53,7 @@
 
     <main class="content">
       <header class="hero">
-        <h1 id="welcome-title">Velkommen "navn"</h1>
+        <h1 id="welcome-title">Velkommen</h1>
         <p>Find billige studiebøger og sælg dine egne brugte bøger her</p>
       </header>
 
