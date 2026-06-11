@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!-- Forside: viser nyeste bøger; `app.js` fylder #book-grid -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brugte Studiebøger</title>
@@ -21,9 +22,11 @@
 </head>
 <body>
   <div class="page-shell">
+    <!-- Sidebar: navigation og hurtigstatus -->
     <aside class="sidebar">
       <h2 class="brand">Brugte Studiebøger</h2>
 
+      <!-- Menu: links til appens hovedsider -->
       <nav class="menu" aria-label="Hovedmenu">
         <a class="menu-item active" href="index.html" aria-current="page">
           <span class="menu-icon" aria-hidden="true">⌂</span>
@@ -43,20 +46,24 @@
         </a>
       </nav>
 
+      <!-- Logout-knap: klik håndteres i app.js (fjerner loggedInUser) -->
       <a id="logoutBtn" class="menu-item" href="#" style="margin-top:12px;">
         <span class="menu-icon" aria-hidden="true">⇦</span>
         <span>Log ud</span>
-      </a>
+      </a> 
 
+      <!-- Status-element: app.js skriver beskeder her -->
       <p class="connection-status" id="status">Klar</p>
     </aside>
 
     <main class="content">
+      <!-- Velkomst-header; `#welcome-title` opdateres fra app.js -->
       <header class="hero">
         <h1 id="welcome-title">Velkommen</h1>
         <p>Find billige studiebøger og sælg dine egne brugte bøger her</p>
       </header>
 
+      <!-- Bog-liste: `#book-grid` fyldes af renderBooks() i app.js -->
       <section>
         <h2 class="section-title">Nyeste bøger til salg</h2>
         <div class="book-grid" id="book-grid"></div>

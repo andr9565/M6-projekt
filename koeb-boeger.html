@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!--
+    Kommentar (Køb bøger)
+    Kort beskrivelse til gruppen:
+    - Formål: Side til at browse og finde bøger andre har sat til salg.
+    - Note: '#book-grid' fyldes automatisk fra `app.js`.
+    - Ændringer til søgning/filtrering skal laves i `app.js`.
+  -->
+    <!-- Køb-side: viser bøger; `#book-grid` fyldes af app.js -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Køb bøger | Brugte Studiebøger</title>
@@ -10,10 +18,12 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="page-shell">
+  <div class="page-shell"> 
+    <!-- Sidebar: navigation og status -->
     <aside class="sidebar">
       <h2 class="brand">Brugte Studiebøger</h2>
 
+      <!-- Menu: navigation mellem siderne -->
       <nav class="menu" aria-label="Hovedmenu">
         <a class="menu-item" href="index.html">
           <span class="menu-icon" aria-hidden="true">⌂</span>
@@ -33,11 +43,13 @@
         </a>
       </nav>
 
+      <!-- Logout-knap: håndteres globalt i app.js -->
       <a id="logoutBtn" class="menu-item" href="#" style="margin-top:12px;">
         <span class="menu-icon" aria-hidden="true">⇦</span>
         <span>Log ud</span>
       </a>
 
+      <!-- Status: viser forbindelses- eller fejlbeskeder -->
       <p class="connection-status">Klar</p>
     </aside>
 

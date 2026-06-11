@@ -1,3 +1,9 @@
+/*
+	styles.css
+	- Hvad: Styling for ReBog (farver, layout, kort osv.).
+	- Tip fra os: Juster farver i :root og grid-opførsel i `.page-shell` og `.book-grid`.
+*/
+
 :root {
 	--bg: #eef2f7;
 	--panel: #0b1635;

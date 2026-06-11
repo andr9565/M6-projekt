@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="da">
 <head>
+  <!-- Login-side: login valideres i app.js (demo: passwords i klartekst) -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BogMarked - Login</title>
@@ -37,15 +38,20 @@
         <h2>Velkommen Tilbage</h2>
         <p class="subtitle">Indtast dine oplysninger for at få adgang til din konto</p>
 
+        <!-- Login-form: app.js validerer brugernavn og password mod databasen -->
         <form id="loginForm">
+          <!-- Brugernavn input: bruges som user-id i databasen -->
           <label for="loginUsername">Brugernavn</label>
           <input id="loginUsername" type="text" placeholder="Indtast dit brugernavn">
 
+          <!-- Password input: i demo gemmes dette i klartekst i DB (ikke til produktion) -->
           <label for="loginPassword">Adgangskode</label>
           <input id="loginPassword" type="password" placeholder="Indtast din adgangskode">
 
+          <!-- Glemt-adgangskode: kun UI-tekst i demo -->
           <a class="forgot" href="#">Glemt adgangskode?</a>
 
+          <!-- Submit: sender formularen til app.js via submit-event -->
           <button type="submit">Log ind</button>
         </form>
 
